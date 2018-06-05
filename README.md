@@ -16,29 +16,42 @@ go get github.com/xlucas/ovh-api-creds
 
 ## Usage
 
-### Create an application
+An application communicating with OVH APIs requires the following credentials:
 
-Create an application via a two-step process. At first the request will return an application key and application secret token then you will have to request a consumer key using `consumer-key create`.
+* an application key
+* a secret token
+* a consumer key
 
-```bash
-ovh-api-creds application create --service ovh --zone eu
-```
 
-Create a new application via a one-step process. All credentials (application key, application secret and consumer key) will be generated at once and you'll have to pick consumer key access rules during the process.
+### Retrieve all credentials at once (all-in-one)
+
+With this approach you are given all credentials in a one-step process.
 
 ```bash
 ovh-api-creds application create --service kimsufi --zone ca --all-in-one
 ```
 
-### Create a consumer key
+### Retrieve an application key and an application secret
 
-Create a new consumer key given the application key and secret token.
+With this approach you aren't given a consumer key. It has to be generated
+with the CLI in a second step.
+
+```bash
+ovh-api-creds application create --service ovh --zone eu
+```
+
+### Retrieve a consumer key
+
+Given you have an application key and a secret token you can request a consumer
+key.
 
 ```bash
 ovh-api-creds consumer-key create --service ovh --zone eu --app-key *** --app-secret ****
 ```
 
-Create a new consumer key with read-only access to `/sms`:
+You can also give it read-only or read-write access and/or restrict API
+access to a particular path.
+
 ```bash
 ovh-api-creds consumer-key create --service ovh --zone eu --app-key *** --app-secret *** --path "/sms/*" --ro
 ```
