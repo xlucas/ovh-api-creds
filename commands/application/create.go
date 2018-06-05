@@ -17,8 +17,9 @@ type createOpts struct {
 func NewCreateCommand() *cobra.Command {
 	opt := new(createOpts)
 	cmd := &cobra.Command{
-		Use:   "create",
-		Short: "Create an application",
+		Use:          "create",
+		Short:        "Create an application",
+		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runCreate(opt.aio, opt.service, opt.zone)
 		},

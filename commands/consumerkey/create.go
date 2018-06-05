@@ -22,8 +22,9 @@ type createOpts struct {
 func NewCreateCommand() *cobra.Command {
 	opt := new(createOpts)
 	cmd := &cobra.Command{
-		Use:   "create",
-		Short: "Create a consumer key",
+		Use:          "create",
+		Short:        "Create a consumer key",
+		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runCreate(
 				opt.path,
