@@ -1,6 +1,6 @@
 # ovh-api-creds
 
-A tiny CLI to manage OVH API credentials
+A tiny CLI to help you generate your first OVH API credentials
 
 
 ## Installation
